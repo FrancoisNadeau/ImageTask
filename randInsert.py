@@ -46,9 +46,11 @@ def randInsert(lst, item):
             Calls flatten(lst) to vectorize 'lstTop'
             see <help(flatten)> for more details
     """
-    sliceIndex = rb(len(lst)-1)
-    lstTop, lstBottom = lst[:sliceIndex], lst[sliceIndex:]
+    sliceIndex = rb(len(lst))
+    lstBottom, lstTop = lst[:sliceIndex], lst[sliceIndex:]
     lstTop.append(item)
     lstTop.append(lstBottom)
     newlst = flatten(lstTop)
     return newlst
+
+
