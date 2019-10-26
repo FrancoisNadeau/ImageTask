@@ -8,8 +8,9 @@ Created on Fri Oct 25 02:21:01 2019
 import os
 import pandas as pd
 from flatten import flatten
-def refFinder(cat_path):
+def refFinder(cat_name):
     cwd = os.getcwd()
+    cat_path = cwd + '\\' + cat_name
     subDirs = [os.path.join(cat_path,dirname) 
               for dirname in os.listdir(cat_path)]
     fPaths = flatten([[os.path.abspath(os.path.join(subDir,filename))
@@ -24,5 +25,6 @@ def refFinder(cat_path):
             if refInd != -1:
                 longpath, ext = os.path.splitext(imName)
                 shortpath = longpath[:longpath.find(ref)]+ext
-                shortpathlist.append(shortpath+ext,imName)
+                shortpathlist.append((shortpath,imName))
     return(shortpathlist,fPaths)
+im = refFinder('bathroom')
